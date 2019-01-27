@@ -1,18 +1,71 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-<title>Bienvenido MMAPP</title>
-<link href="./css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
-<link rel="stylesheet" href="./css/style.css">
-<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-</head>
-<body>
-	<div id="principal">
-	<h1>Bienvenido! a MMAPP</h1>
-	
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MMAPP</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/logo-nav.css" rel="stylesheet">
+
+
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="./css/logo_MMAPP.png" width="150" height="30" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Inicio
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <label for="file-input" class="nav-link"> Subir Contactos</label>
+  <input type="file" id="file-input" accept=".txt" style="display: none;"/>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="descargar">Descargar Contactos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Donar</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+      <h1 class="mt-5">Bienvenid@, a MMAPP</h1>
+      <p>La herramienta de Whatsapp Marketing.</p>
+    </div>
+
+
+
+<div id="principal">
+
+  
 <input type="text" id="one" placeholder="Nombre" required="required">
-<input type="text" id="four" placeholder="Prefijo" required="required">
+<input type="text" id="four" placeholder="Prefijo (ej: 598)" required="required">
 <input type="text" id="two" placeholder="Teléfono" required="required">
 
 <textarea name="three" id="three" cols="30" rows="3" placeholder="Mensaje" required="required"></textarea><br>
@@ -58,10 +111,23 @@ function listshow(){
 var list=""
 
 for(var i=0;i<newone.length;i++){
-list+= "<tr><td>"+(i+1)+"</td>"+"<td>"+newone[i]+"</td>"+"<td>"+newfour[i]+"</td>"+"<td>"+newtwo[i]+"</td>"+"<td>"+newthree[i]+"</td>"+"<td>"+"<button class='edit'onclick='edt("+i+")'>Editar</button><button class='delete' onclick='del("+i+")'>Eliminar</button><button class='submit' onclick='wapp("+i+")'>Enviar WhatsApp</button>"+"</td></tr>"
+list+= "<tr><td id='id"+(i+1)+"'>"+(i+1)+"</td>"+"<td id='a"+(i)+"'>"+newone[i]+"</td>"+"<td id='b"+(i)+"'>"+newfour[i]+"</td>"+"<td id='c"+(i)+"'>"+newtwo[i]+"</td>"+"<td id='d"+(i)+"'>"+newthree[i]+"</td>"+"<td>"+"<button class='edit' onclick='edt("+i+")'>Editar</button><button class='delete' onclick='del("+i+")'>Eliminar</button><button class='submit' onclick='wapp("+i+")'>Enviar WhatsApp</button>"+"</td></tr>"
 
 }
 document.getElementById('data').innerHTML=list
+
+
+
+
+var contenidoDeArchivo = list;
+var elem = document.getElementById('descargar');
+
+elem.download = "Contactos_MMAPP.txt";
+elem.href = "data:application/octet-stream," 
+                     + encodeURIComponent(contenidoDeArchivo);
+
+
+
 
 }
 
@@ -98,7 +164,54 @@ window.open('https://web.whatsapp.com/send?phone=+'+newfour[wid]+newtwo[wid]+ '&
 }
 
 
+
+
+function leerArchivo(e) {
+  var archivo = e.target.files[0];
+  if (!archivo) {
+    return;
+  }
+  var lector = new FileReader();
+  lector.onload = function(e) {
+    var list = e.target.result;
+    mostrarContenido(list);
+  };
+  lector.readAsText(archivo);
+}
+
+function mostrarContenido(list) {
+
+  var elemento = document.getElementById('data');
+  elemento.innerHTML = list;
+var i = 1;
+while (document.getElementById('id'+(i)).innerText != ""){
+newone[i-1] = document.getElementById('a'+(i-1)).innerText;
+newtwo[i-1] = document.getElementById('c'+(i-1)).innerText;
+newthree[i-1] = document.getElementById('d'+(i-1)).innerText;
+newfour[i-1] = document.getElementById('b'+(i-1)).innerText;
+i++;
+}
+
+}
+
+document.getElementById('file-input')
+  .addEventListener('change', leerArchivo, false);
+
+
+
+
+
 </script>
 
-</body>
-</html> 
+
+
+
+    <!-- /.container -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
