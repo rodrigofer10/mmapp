@@ -1,0 +1,63 @@
+body{
+	background-color: #227093;
+	font-family: 'Raleway', sans-serif;
+}
+.table-bordered {
+        margin-top: 10px;
+    background-color: white;
+}
+.add{
+	background-color: #FFC107;
+    border: 0px;
+    border-radius: 20px;
+    padding: 10px;
+        color: white;
+            margin-top: 10px;
+}
+.edit{
+	background-color: #009688;
+    border: 0px;
+    border-radius: 20px;
+    padding: 10px;
+        color: white;
+            margin-right: 10px;
+}
+.delete{
+	background-color: #F44336;
+    border: 0px;
+    border-radius: 20px;
+    padding: 10px;
+        color: white;
+            margin-right: 10px;
+}
+.submit{
+	background-color: #9C27B0;
+    border: 0px;
+    border-radius: 20px;
+    padding: 10px;
+        color: white;
+}
+.update{
+	background-color: #E91E63;
+    border: 0px;
+    border-radius: 20px;
+    padding: 10px;
+        color: white;
+            margin-top: 10px;
+}
+h1{
+	color:white;
+}
+#principal{
+	margin-left: 20px;
+
+}
+input{
+	padding: 10px;
+}
+#three{
+	width: 90%;
+	margin-top: 10px;
+	    padding: 10px;
+
+}
