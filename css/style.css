@@ -6,6 +6,9 @@ body{
         margin-top: 10px;
     background-color: white;
 }
+thead{
+	background-color: #ecf0f1;
+}
 .add{
 	background-color: #FFC107;
     border: 0px;
